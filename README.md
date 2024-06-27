@@ -1,0 +1,1 @@
+Proyecto #2 de la formacion como backend developer del programa Oracle-next-generation + Alura, Literalura es una api manejada por consola con las principales operaciones crud consumiendo la api de libros usando Java, SpringBoot y postgresql
