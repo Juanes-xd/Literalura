@@ -1,4 +1,5 @@
 package com.Juanes.Literalura.services;
 
-public class IConvierteDatos {
+public interface IConvierteDatos {
+    <T> T obtenerDatos(String json, Class<T> clase);
 }
