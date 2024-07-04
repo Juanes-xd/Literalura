@@ -1,14 +1,27 @@
 package com.Juanes.Literalura.principal;
 
+import com.Juanes.Literalura.entities.DatosAutor;
+import com.Juanes.Literalura.entities.DatosLibro;
+import com.Juanes.Literalura.entities.Libro;
+import com.Juanes.Literalura.repository.AutorRepository;
+import com.Juanes.Literalura.repository.LibroRepository;
 import com.Juanes.Literalura.services.ConsumoApi;
+import com.Juanes.Literalura.services.ConvierteDatos;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
     private Scanner teclado = new Scanner(System.in);
     private ConsumoApi consumoApi = new ConsumoApi();
     private final String URL_BASE = "https://gutendex.com/books/";
-
+    private ConvierteDatos conversor = new ConvierteDatos();
+    private List<DatosAutor> datosSeries = new ArrayList<>();
+    private AutorRepository repositorioAutores;
+    private List<DatosLibro> datosLibros = new ArrayList<>();
+    private LibroRepository repositorioLibros;
+    private List<Libro> Libros;
 
 
     public void muestraElMenu() {
@@ -20,7 +33,7 @@ public class Principal {
                     2 - Listar todos los libros
                     3 - Lista de autores
                     4 - Listar autores desde un determinado año
-                    5 - Listar libros de un determinado idioma     
+                    5 - Listar libros por idioma     
                     0 - Salir
                     ---------- Elige una opcion ---------------
                     """;
@@ -29,6 +42,7 @@ public class Principal {
             teclado.nextLine();
 
             switch (opcion) {
+
                 case 1:
 
                     break;
@@ -36,6 +50,12 @@ public class Principal {
 
                     break;
                 case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
 
                     break;
                 case 0:
