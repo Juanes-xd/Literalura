@@ -23,7 +23,12 @@ public class Principal {
     private LibroRepository repositorioLibros;
     private List<Libro> Libros;
 
-
+public Principal (AutorRepository repositorioAutores){
+    this.repositorioAutores = repositorioAutores;
+}
+public Principal (LibroRepository repositorioLibros){
+    this.repositorioLibros = repositorioLibros;
+}
     public void muestraElMenu() {
         var opcion = -1;
         while (opcion != 0) {
@@ -44,21 +49,21 @@ public class Principal {
             switch (opcion) {
 
                 case 1:
-
+                    buscarLibroPorTitulo();
                     break;
                 case 2:
-
+                    getAllBooks();
                     break;
                 case 3:
-
+                    getAllAuthors();
                     break;
                 case 4:
-
+                    getAllAuthorsYear();
                     break;
                 case 5:
-
+                    getBooksLanguage();
                     break;
-                case 0:
+                case 6:
                     System.out.println("Cerrando la aplicación...");
                     break;
                 default:
@@ -67,8 +72,71 @@ public class Principal {
         }
 
     }
+    private void buscarLibroPorTitulo(){
+        System.out.println("Escribe el nombre del libro que deseass buscar: ");
+        var nombreLibro = teclado.nextLine();
+        var json = consumoApi.obtenerDatos(URL_BASE+nombreLibro);
+        DatosLibro datos = conversor.obtenerDatos(json,DatosLibro.class);
+        System.out.println(
+                """
+                -------- Libro --------
+                Titulo:
+                Autor:
+                Idioma:
+                Numero de descargas:        
+                        """
+        );
+    }
 
+    private void getAllBooks(){
+        var json = consumoApi.obtenerDatos(URL_BASE+"books");
+        DatosLibro datos = conversor.obtenerDatos(json,DatosLibro.class);
+        System.out.println(
+                """
+                -------- Libro --------
+                Titulo:
+                Autor:
+                Idioma:
+                Numero de descargas:        
+                        """
+        );
+    }
 
+    private void getAllAuthors(){
+        System.out.println(
+                """
+                Autor:
+                Fecha de nacimiento:
+                Fecha de fallecimiento:
+                Libros:        
+                        """
+        );
+    }
+
+    private void getAllAuthorsYear(){
+        System.out.println("Ingrese el año en el que desea buscar el autor: ");
+        var año = teclado.nextInt();
+        System.out.println(
+                """
+                Autor:
+                Fecha de nacimiento:
+                Fecha de fallecimiento:
+                Libros:        
+                        """
+        );
+    }
+
+    private void getBooksLanguage(){
+        System.out.println(
+                """
+                Ingrese el idioma para buscar los libros:
+                es - Español
+                en - Ingles
+                fn - Frances
+                pr - Portugues        
+                        """
+        );
+    }
 
 
 
